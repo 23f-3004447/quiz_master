@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .student { background-color: #3498db; }
+        .teacher { background-color: #2ecc71; }
+        .student:hover { background-color: #2980b9; }
+        .teacher:hover { background-color: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Are you a Student or a Teacher?</h1>
+        <button class="btn student" onclick="window.location.href='/student'">Student</button>
+
+        <button class="btn student" onclick="window.location.href='/teacher_login'">Teacher</button>
+    </div>
+</body>
+</html>

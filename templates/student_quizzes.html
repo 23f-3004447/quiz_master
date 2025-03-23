@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quizzes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h2>Quizzes</h2>
+
+    <div class="quiz-container">
+        {% for quiz in quizzes %}
+            <div class="quiz-card" onclick="attemptQuiz('{{ quiz.id }}')">
+                <h3>{{ quiz.title }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('view_student_chapters', subject_id=subject_id) }}">Back</a>
+
+
+
+    <script>
+        function attemptQuiz(quizId) {
+            window.location.href = `/attempt_quiz/${quizId}`;
+        }
+    </script>
+
+    <style>
+        .quiz-card {
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .quiz-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+
+</body>
+</html>

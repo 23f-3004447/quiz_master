@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>{{ quiz.title }}</h1>
+    
+    <form method="POST">
+        {% for question in questions %}
+            <h3>{{ question.text }}</h3>
+            <label><input type="radio" name="question_{{ question.id }}" value="{{ question.option_a }}"> {{ question.option_a }}</label><br>
+            <label><input type="radio" name="question_{{ question.id }}" value="{{ question.option_b }}"> {{ question.option_b }}</label><br>
+            <label><input type="radio" name="question_{{ question.id }}" value="{{ question.option_c }}"> {{ question.option_c }}</label><br>
+            <label><input type="radio" name="question_{{ question.id }}" value="{{ question.option_d }}"> {{ question.option_d }}</label><br>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

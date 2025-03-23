@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Quizzes</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin-top: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            width: 60%;
+            text-align: left;
+        }
+        .quiz-list {
+            padding: 0;
+            list-style: none;
+        }
+        .quiz-list li {
+            background: #ecf0f1;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        .stat-button {
+            background: #2ecc71;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quizzes for {{ chapter.name }}</h1>
+
+        {% if quizzes %}
+            <ul class="quiz-list">
+                {% for quiz in quizzes %}
+                    <li>
+                        <a href="{{ url_for('add_quiz', chapter_id=chapter.id, quiz_id=quiz.id) }}">{{ quiz.title }}</a>
+                        <a href="{{ url_for('quiz_stats', quiz_id=quiz.id) }}" class="stat-button">📊 Stats</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No quizzes added yet.</p>
+        {% endif %}
+
+        <a href="{{ url_for('add_chapter', subject_id=chapter.subject_id) }}">Back to Chapters</a>
+    </div>
+</body>
+</html>

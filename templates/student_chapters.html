@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chapters</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h2>Chapters</h2>
+
+    <div class="chapter-container">
+        {% for chapter in chapters %}
+            <div class="chapter-card" onclick="viewQuizzes('{{ chapter.id }}')">
+                <h3>{{ chapter.name }}</h3>
+                <p>{{ chapter.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('dashboard') }}">Back</a>
+
+    <script>
+        function viewQuizzes(chapterId) {
+            window.location.href = `/student/quizzes/${chapterId}`;
+        }
+    </script>
+
+    <style>
+        .chapter-card {
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .chapter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+
+</body>
+</html>
